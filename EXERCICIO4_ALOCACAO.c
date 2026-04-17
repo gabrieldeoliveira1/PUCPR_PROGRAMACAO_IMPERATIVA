@@ -29,4 +29,5 @@ int main()
     printf("Quantidade de multiplos de %d: %d\n", x, multiplos);
 
     free(p);
+    
 }

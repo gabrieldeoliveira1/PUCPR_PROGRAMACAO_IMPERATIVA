@@ -4,12 +4,17 @@
 void copiar(int *pointer1, int *pointer2, int a, int b)
 {
     int i;
-    int *temp = pointer2;
 
-    for(i = 0; i < a && i < b; i++)
+    for(i = 0; i < b; i++)
     {
-        pointer2[i] = pointer1[i];
-        pointer1[i] = temp[i];
+        int temp = *(pointer2 + i);
+        pointer1[i] = temp;
+    }
+
+    for(i = 0; i < a; i++)
+    {
+        int temp2 = *(pointer1 + i);
+        pointer2[i] = temp2;
     }
 
     printf("\n");
