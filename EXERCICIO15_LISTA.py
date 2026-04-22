@@ -3,21 +3,15 @@ hora_final = int(input("Digite a hora final do jogo: "))
 minuto_inicial = int(input("Digite o minuto inicial do jogo: "))
 minuto_final = int(input("Digite o minuto final do jogo: "))
 
-teste_inicial = minuto_final - minuto_inicial
+minutos_inicio = (hora_inicial * 60) + minuto_inicial
+minutos_final = (hora_final * 60) + minuto_final
 
+duracao = minutos_final - minutos_inicio
 
-if minuto_final < minuto_inicial:
-    minuto_inicial = 60 - minuto_inicial
-    minuto_total = minuto_final + minuto_inicial
-else:
-    minuto_total = minuto_final - minuto_inicial
+if duracao <= 0:
+    duracao += 1440
 
-
-if hora_final < hora_inicial:
-    hora_total = hora_inicial + hora_final
-else: 
-    hora_total = hora_final - hora_inicial
+hora_total = duracao // 60
+minuto_total = duracao % 60
 
 print(f"O jogo durou {hora_total} horas e {minuto_total} minutos.")
-
-#TEM QUE TERMINARRRRRRRRRRRRRRRRRRRRR!

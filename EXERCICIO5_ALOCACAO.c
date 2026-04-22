@@ -15,8 +15,8 @@ int main()
     scanf("%d", &num_alunos);
 
     matricula = (int*)malloc(num_alunos * sizeof(int));
-    sobrenomes = (char*)malloc(num_alunos * sizeof(char) * 51); // 50 caracteres + 1 para o caractere nulo 
-    nascimento = (char*)malloc(num_alunos * sizeof(char) * 11); // 10 caracteres + 1 para o caractere nulo
+    sobrenomes = (char*)malloc(num_alunos * sizeof(char) * 51);  
+    nascimento = (char*)malloc(num_alunos * sizeof(char) * 11); 
 
     printf("Digite os sobrenomes dos alunos:\n");
     for(i = 0; i < num_alunos; i++)
