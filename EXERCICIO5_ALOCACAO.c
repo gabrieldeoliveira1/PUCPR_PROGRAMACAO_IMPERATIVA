@@ -1,85 +1,50 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void copiar(int *pointer1, int *pointer2, int a, int b)
-{
-    int i;
-
-    for(i = 0; i < b; i++)
-    {
-        int temp = *(pointer2 + i);
-        pointer1[i] = temp;
-    }
-
-    for(i = 0; i < a; i++)
-    {
-        int temp2 = *(pointer1 + i);
-        pointer2[i] = temp2;
-    }
-
-    printf("\n");
-
-    printf("Vetor 1 copiado para vetor 2: ");
-    for(i = 0; i < a && i < b; i++)
-    {
-        printf("%d ", pointer2[i]);
-    }
-    
-    printf("\n");
-
-    printf("Vetor 2 copiado para vetor 1: ");
-    for(i = 0; i < a && i < b; i++)
-    {
-        printf("%d ", pointer1[i]);
-    }
-}
-
 
 int main()
 {
-    int tamanho1, tamanho2, i; 
-    int *p1, *p2;
 
-    printf("Digite o tamanho do primeiro vetor: ");
-    scanf("%d", &tamanho1);
+    int num_alunos;
+    int *matricula;
+    char *sobrenomes;
+    char *nascimento;
+    int i; 
 
-    printf("Digite o tamanho do segundo vetor: ");
-    scanf("%d", &tamanho2);
+    printf("Digite o numero de alunos: ");
+    scanf("%d", &num_alunos);
 
-    printf("\n");
+    matricula = (int*)malloc(num_alunos * sizeof(int));
+    sobrenomes = (char*)malloc(num_alunos * sizeof(char) * 51); // 50 caracteres + 1 para o caractere nulo 
+    nascimento = (char*)malloc(num_alunos * sizeof(char) * 11); // 10 caracteres + 1 para o caractere nulo
 
-    p1 = (int*)malloc(tamanho1 * sizeof(int));
-    p2 = (int*)malloc(tamanho2 * sizeof(int));
-
-
-    for(i = 0; i < tamanho1; i++)
+    printf("Digite os sobrenomes dos alunos:\n");
+    for(i = 0; i < num_alunos; i++)
     {
-        p1[i] = i + 1;
+        printf("Sobrenome do aluno %d: ", i + 1);
+        scanf("%s", &sobrenomes[i*51]);
     }
 
-    for(i = 0; i < tamanho2; i++)
+    printf("Digite as matriculas dos alunos:\n");
+    for(i = 0; i < num_alunos; i++)
     {
-        p2[i] = i + 2;
+        printf("Matricula do aluno %d: ", i + 1);
+        scanf("%d", &matricula[i]);
     }
 
-    printf("Vetor 1: ");
-    for(i = 0; i < tamanho1; i++)
+    printf("Digite as datas de nascimento dos alunos:\n");
+    for(i = 0; i < num_alunos; i++)
     {
-        printf("%d ", p1[i]);
+        printf("Data de nascimento do aluno %d (dd/mm/aaaa): ", i + 1);
+        scanf("%s", &nascimento[i*11]);
     }
 
-    printf("\n");
-
-    printf("Vetor 2: ");
-    for(i = 0; i < tamanho2; i++)
+    printf("\n------DADOS DOS ALUNOS------\n");
+    for(i = 0; i < num_alunos; i++)
     {
-        printf("%d ", p2[i]);
+        printf("Sobrenome do aluno %d: %s --- ", i+1, &sobrenomes[i * 51]);
+        printf("Matriculado do auno %d: %d --- ", i+1, matricula[i]);
+        printf("Data de nascimento do aluno %d: %s", i+1, &nascimento[i * 11]);
+        printf("\n");
     }
-
-    printf("\n");
-
-    copiar(p1, p2, tamanho1, tamanho2);
-
-    free(p1);
-    free(p2);
 }
